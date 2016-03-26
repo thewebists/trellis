@@ -8,5 +8,7 @@ ip_whitelist:
   - "{{ lookup('pipe', 'curl -4 -s https://api.ipify.org') }}"
 
 wordpress_env_defaults:
-  wp_env: "{{ env }}"
+  db_name: "{{ item.key | underscore }}_{{ env }}"
+  db_user: "{{ item.key | underscore }}"
   disable_wp_cron: true
+  wp_env: "{{ env }}"

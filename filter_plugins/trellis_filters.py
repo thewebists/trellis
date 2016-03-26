@@ -42,6 +42,10 @@ def to_env(dict_value):
     envs = ["{0}='{1}'".format(key.upper(), value) for key, value in dict_value.iteritems()]
     return "\n".join(envs)
 
+def underscore(value):
+    ''' Convert dots to underscore in a string '''
+    return value.replace('.', '_')
+
 class FilterModule(object):
     ''' Trellis jinja2 filters '''
 
@@ -49,4 +53,5 @@ class FilterModule(object):
         return {
             'reverse_www': reverse_www,
             'to_env': to_env,
+            'underscore': underscore,
         }
